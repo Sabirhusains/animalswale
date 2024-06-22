@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "37845653677",
+    "project_id": "animalswale-50d5b",
+    "storage_bucket": "animalswale-50d5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37845653677:android:2e77ed3e719c99a2a10e24",
+        "android_client_info": {
+          "package_name": "com.animalswale.animalswale_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABIpOVt3IVIN0dZN4pVjmHiFuTzOLtJRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
