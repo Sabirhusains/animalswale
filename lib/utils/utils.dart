@@ -39,8 +39,6 @@ class Utils {
     return await sharedPreferences.get(key) ?? defaultValue;
   }
 
-
-
   //HEADER SAVE AUTH TOKEN METHOD
   static Future<void> saveToken(String token) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -76,8 +74,7 @@ class Utils {
     return await get('userData');
   }
 
-
-
+  //Clear ALL Shared prefs Data METHOD
   static Future<void> clearAllSavedData()async{
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();

@@ -12,15 +12,19 @@ class CategoryWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Categories",
                 style: context.bodyLarge,
               ),
+              InkWell(
+                onTap: () => AutoRouter.of(context).push(CategoryListRoute(categories: categories)),
+                  child: "See All >".text.bodyLarge(context).blue700.make()),
             ],
           ),
         ),
+        15.h.heightBox,
         //List Category
         SizedBox(
           height: 110,

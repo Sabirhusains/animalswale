@@ -17,6 +17,7 @@ class AuthRepo extends ApiClient{
   AuthRepo();
 
   var token;
+  UserData? userData;
 
   getFcmToken() async {
     if (Platform.isIOS) {
@@ -28,8 +29,13 @@ class AuthRepo extends ApiClient{
     }
   }
 
+  getUserData()async{
+    var userdata = await Utils.get("userData") ?? userData;
+    userData = UserData.fromJson(json.decode(userdata));
+  }
+
   ///Login Api
-  Future<MessageModel> loginApi(String phone,context)async{
+  Future<MessageModel> loginApi (String phone,context)async{
     await getFcmToken();
 
     var data = {
@@ -58,7 +64,7 @@ class AuthRepo extends ApiClient{
   }
 
   ///Register Api
-  Future<MessageModel> registerApi(String name,String phone,String email,String password,XFile image,context)async{
+  Future<MessageModel> registerApi (String name,String phone,String email,String password,XFile image,context)async{
     await getFcmToken();
 
     var data = {
@@ -95,8 +101,46 @@ class AuthRepo extends ApiClient{
     return MessageModel();
   }
 
+  ///User Profile Api
+  Future<OtpModel> updateProfileApi (String name,String email,XFile? image,context)async{
+    await getUserData();
+
+    var data = {
+      MyStrings.userId: userData!.id,
+      MyStrings.name: name,
+      MyStrings.email: email,
+    };
+
+    if(image == null){
+      null;
+    }else{
+      // Encode the image file to base64 string
+      String base64Image = base64Encode(await image.readAsBytes());
+      // Add the base64 string to the data map
+      data[MyStrings.profile_image] = base64Image;
+
+    }
+    var webData = {MyStrings.webData: jsonEncode(data)};
+
+    try{
+      final response = await postRequest(path: ApiEndpointsUrl.profile,body: webData,isTokenRequired: true);
+      if(response.statusCode == 200){
+        // var responseJson = json.decode(response.data);
+        final responseData = OtpModel.fromJson(response.data);
+        return responseData;
+      }else{
+        OtpModel();
+      }
+
+    }on Exception catch(e){
+      VxToast.show(context, msg: e.toString());
+      OtpModel();
+    }
+    return OtpModel();
+  }
+
   ///OTP Api
-  Future<OtpModel> otpApi(String phone,String otp,context)async{
+  Future<OtpModel> otpApi (String phone,String otp,context)async{
 
     var data = {
       MyStrings.phone: "91$phone",
@@ -122,4 +166,32 @@ class AuthRepo extends ApiClient{
     }
     return OtpModel();
   }
+
+  ///Logout Api
+  Future<MessageModel> logoutApi (context)async{
+    await getUserData();
+
+    var data = {
+      MyStrings.userId: userData!.id,
+    };
+
+    var webData = {MyStrings.webData: jsonEncode(data)};
+
+    try{
+      final response = await postRequest(path: ApiEndpointsUrl.logout,body: webData,isTokenRequired: true);
+      if(response.statusCode == 200){
+        // var responseJson = json.decode(response.data);
+        final responseData = MessageModel.fromJson(response.data);
+        return responseData;
+      }else{
+        MessageModel();
+      }
+
+    }on Exception catch(e){
+      VxToast.show(context, msg: e.toString());
+      MessageModel();
+    }
+    return MessageModel();
+  }
+
 }

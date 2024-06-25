@@ -1,17 +1,22 @@
 import 'package:animalswale_app/data/repository/auth_repo.dart';
 import 'package:animalswale_app/data/repository/dashboard_repo.dart';
 import 'package:animalswale_app/data/repository/repository.dart';
+import 'package:animalswale_app/presentation/screens/auth/otp/otp_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:velocity_bloc/velocity_bloc.dart';
 import 'core/constants/my_strings.dart';
 import 'core/themes/app_themes.dart';
 import 'firebase_options.dart';
 import 'presentation/routers/routers_import.dart';
 
-void main()async {
+
+///Kamiyab GS
+//95121 86530
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     name: "AnimalsWale",
@@ -19,11 +24,11 @@ void main()async {
   );
 
   runApp(RepositoryProvider(
-    create: (context) =>
-        Repository(
-        authRepo: AuthRepo(),
-        dashboardRepo: DashboardRepo(),
-    ),
+      create: (context) =>
+          Repository(
+            authRepo: AuthRepo(),
+            dashboardRepo: DashboardRepo(),
+          ),
       child: MyApp()));
 }
 
@@ -41,13 +46,16 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         useInheritedMediaQuery: true,
         builder: (context, child) {
-          return MaterialApp.router(
-            title: MyStrings.appName,
-            theme: AppThemes.light,
-            darkTheme: AppThemes.dark,
-            themeMode: ThemeMode.system,
-            routerConfig: _appRouter.config(),
-            // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          return BlocProvider(
+            create: (context) => VelocityBloc<UserData>(UserData()),
+            child: MaterialApp.router(
+              title: MyStrings.appName,
+              theme: AppThemes.light,
+              darkTheme: AppThemes.dark,
+              themeMode: ThemeMode.system,
+              routerConfig: _appRouter.config(),
+              // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+            ),
           );
         }
     );

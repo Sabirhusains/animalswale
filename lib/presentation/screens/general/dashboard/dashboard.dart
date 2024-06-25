@@ -11,6 +11,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   late DashboardViewModel dashboardViewModel;
   UserData? userData;
+  List<Category>? categoriesList;
 
   @override
   void initState() {
@@ -24,7 +25,6 @@ class _DashboardState extends State<Dashboard> {
   getUserId() async {
     var userdata = await Utils.get("userData") ?? userData;
     userData = UserData.fromJson(json.decode(userdata));
-    print('USer ID ==-=--=----=-=-->${userData!.id}');
   }
 
   @override
@@ -40,28 +40,32 @@ class _DashboardState extends State<Dashboard> {
                 child: CircularProgressIndicator.adaptive(),
               );
             } else if (state is VelocityUpdateState) {
-              InitData initData = state.data.data!;
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    20.h.heightBox,
-                    //Banner Widget
-                    BannerWidget(banners: initData.banners),
-                    40.h.heightBox,
-                    //Category Widget
-                    CategoryWidget(
-                      categories: initData.categories,
-                    ),
-                    40.h.heightBox,
-                    //Post Widget
-                    PostWidget(
-                      posts: initData.posts,
-                      userId: userData!.id!,
-                    ),
-                    40.h.heightBox,
-                  ],
-                ),
-              );
+              if(state.data.data != null){
+                InitData initData = state.data.data!;
+                categoriesList = initData.categories;
+                return SingleChildScrollView(
+                  physics:const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      20.h.heightBox,
+                      //Banner Widget
+                      BannerWidget(banners: initData.banners),
+                      40.h.heightBox,
+                      //Category Widget
+                      CategoryWidget(
+                        categories: initData.categories,
+                      ),
+                      40.h.heightBox,
+                      //Post Widget
+                      PostWidget(
+                        posts: initData.posts,
+                        userId: userData!.id!,
+                      ),
+                      40.h.heightBox,
+                    ],
+                  ),
+                );
+              }
             }
             return const SizedBox();
           },
@@ -69,7 +73,7 @@ class _DashboardState extends State<Dashboard> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: MyColors.primaryColor,
-        onPressed: () {},
+        onPressed: () =>categoriesList!.isNotEmpty? AutoRouter.of(context).push(AddPostsRoute(categoryList: categoriesList)): null,
         child:const Icon(FeatherIcons.plus,color:MyColors.white,),
       ),
     );

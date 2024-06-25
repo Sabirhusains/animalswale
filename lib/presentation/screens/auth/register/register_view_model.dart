@@ -26,8 +26,8 @@ class RegisterViewModel {
   register(context) async {
     isLoadingBloc.onUpdateData(true);
     var registerData = await repository.authRepo.registerApi(
-        phoneController.text,
         nameController.text,
+        phoneController.text,
         emailController.text,
         passwordController.text,
         selectedImageBloc.state.data!,

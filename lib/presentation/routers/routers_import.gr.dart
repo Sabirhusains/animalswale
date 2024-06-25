@@ -9,106 +9,178 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:animalswale_app/presentation/screens/auth/auth_imports.dart'
-    as _i1;
-import 'package:animalswale_app/presentation/screens/auth/login/login_imports.dart'
-    as _i5;
-import 'package:animalswale_app/presentation/screens/auth/otp/otp_imports.dart'
-    as _i7;
-import 'package:animalswale_app/presentation/screens/auth/register/register_imports.dart'
-    as _i9;
-import 'package:animalswale_app/presentation/screens/general/dashboard/dashboard_imports.dart'
     as _i2;
-import 'package:animalswale_app/presentation/screens/general/filter/filterPost_imports.dart'
-    as _i3;
-import 'package:animalswale_app/presentation/screens/general/general_imports.dart'
+import 'package:animalswale_app/presentation/screens/auth/login/login_imports.dart'
+    as _i7;
+import 'package:animalswale_app/presentation/screens/auth/otp/otp_imports.dart'
+    as _i9;
+import 'package:animalswale_app/presentation/screens/auth/register/register_imports.dart'
+    as _i11;
+import 'package:animalswale_app/presentation/screens/general/dashboard/addPosts/add_post_imports.dart'
+    as _i1;
+import 'package:animalswale_app/presentation/screens/general/dashboard/dashboard_imports.dart'
     as _i4;
-import 'package:animalswale_app/presentation/screens/general/profile/profile_imports.dart'
-    as _i8;
-import 'package:animalswale_app/presentation/screens/onboard/onboard_imports.dart'
+import 'package:animalswale_app/presentation/screens/general/dashboard/dashboard_model.dart'
+    as _i16;
+import 'package:animalswale_app/presentation/screens/general/filter/filterPost_imports.dart'
+    as _i5;
+import 'package:animalswale_app/presentation/screens/general/general_imports.dart'
     as _i6;
-import 'package:animalswale_app/presentation/screens/splash/splash_import.dart'
+import 'package:animalswale_app/presentation/screens/general/profile/category/category_imports.dart'
+    as _i3;
+import 'package:animalswale_app/presentation/screens/general/profile/profile_imports.dart'
     as _i10;
-import 'package:auto_route/auto_route.dart' as _i11;
-import 'package:flutter/material.dart' as _i12;
+import 'package:animalswale_app/presentation/screens/general/profile/updateProfile/update_profile_imports.dart'
+    as _i13;
+import 'package:animalswale_app/presentation/screens/onboard/onboard_imports.dart'
+    as _i8;
+import 'package:animalswale_app/presentation/screens/splash/splash_import.dart'
+    as _i12;
+import 'package:auto_route/auto_route.dart' as _i14;
+import 'package:flutter/material.dart' as _i15;
 
-abstract class $AppRouter extends _i11.RootStackRouter {
+abstract class $AppRouter extends _i14.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i11.PageFactory> pagesMap = {
-    AuthRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+  final Map<String, _i14.PageFactory> pagesMap = {
+    AddPostsRoute.name: (routeData) {
+      final args = routeData.argsAs<AddPostsRouteArgs>();
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.Auth(),
+        child: _i1.AddPosts(
+          key: args.key,
+          categoryList: args.categoryList,
+        ),
+      );
+    },
+    AuthRoute.name: (routeData) {
+      return _i14.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i2.Auth(),
+      );
+    },
+    CategoryListRoute.name: (routeData) {
+      final args = routeData.argsAs<CategoryListRouteArgs>();
+      return _i14.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i3.CategoryList(
+          key: args.key,
+          categories: args.categories,
+        ),
       );
     },
     DashboardRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.Dashboard(),
+        child: const _i4.Dashboard(),
       );
     },
     FilterPostRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.FilterPost(),
+        child: const _i5.FilterPost(),
       );
     },
     GeneralRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.General(),
+        child: const _i6.General(),
       );
     },
     LoginRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.Login(),
+        child: const _i7.Login(),
       );
     },
     OnboardRoute.name: (routeData) {
       final args = routeData.argsAs<OnboardRouteArgs>(
           orElse: () => const OnboardRouteArgs());
-      return _i11.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i6.Onboard(key: args.key),
+        child: _i8.Onboard(key: args.key),
       );
     },
     OtpRoute.name: (routeData) {
       final args = routeData.argsAs<OtpRouteArgs>();
-      return _i11.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.Otp(
+        child: _i9.Otp(
           key: args.key,
           mobileNo: args.mobileNo,
         ),
       );
     },
     ProfileRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i8.Profile(),
+        child: const _i10.Profile(),
       );
     },
     RegisterRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.Register(),
+        child: const _i11.Register(),
       );
     },
     SplashScreenRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
+      return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i10.SplashScreen(),
+        child: const _i12.SplashScreen(),
+      );
+    },
+    UpdateProfileRoute.name: (routeData) {
+      return _i14.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i13.UpdateProfile(),
       );
     },
   };
 }
 
 /// generated route for
-/// [_i1.Auth]
-class AuthRoute extends _i11.PageRouteInfo<void> {
-  const AuthRoute({List<_i11.PageRouteInfo>? children})
+/// [_i1.AddPosts]
+class AddPostsRoute extends _i14.PageRouteInfo<AddPostsRouteArgs> {
+  AddPostsRoute({
+    _i15.Key? key,
+    required List<_i16.Category>? categoryList,
+    List<_i14.PageRouteInfo>? children,
+  }) : super(
+          AddPostsRoute.name,
+          args: AddPostsRouteArgs(
+            key: key,
+            categoryList: categoryList,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPostsRoute';
+
+  static const _i14.PageInfo<AddPostsRouteArgs> page =
+      _i14.PageInfo<AddPostsRouteArgs>(name);
+}
+
+class AddPostsRouteArgs {
+  const AddPostsRouteArgs({
+    this.key,
+    required this.categoryList,
+  });
+
+  final _i15.Key? key;
+
+  final List<_i16.Category>? categoryList;
+
+  @override
+  String toString() {
+    return 'AddPostsRouteArgs{key: $key, categoryList: $categoryList}';
+  }
+}
+
+/// generated route for
+/// [_i2.Auth]
+class AuthRoute extends _i14.PageRouteInfo<void> {
+  const AuthRoute({List<_i14.PageRouteInfo>? children})
       : super(
           AuthRoute.name,
           initialChildren: children,
@@ -116,13 +188,51 @@ class AuthRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'AuthRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.Dashboard]
-class DashboardRoute extends _i11.PageRouteInfo<void> {
-  const DashboardRoute({List<_i11.PageRouteInfo>? children})
+/// [_i3.CategoryList]
+class CategoryListRoute extends _i14.PageRouteInfo<CategoryListRouteArgs> {
+  CategoryListRoute({
+    _i15.Key? key,
+    required List<_i16.Category> categories,
+    List<_i14.PageRouteInfo>? children,
+  }) : super(
+          CategoryListRoute.name,
+          args: CategoryListRouteArgs(
+            key: key,
+            categories: categories,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CategoryListRoute';
+
+  static const _i14.PageInfo<CategoryListRouteArgs> page =
+      _i14.PageInfo<CategoryListRouteArgs>(name);
+}
+
+class CategoryListRouteArgs {
+  const CategoryListRouteArgs({
+    this.key,
+    required this.categories,
+  });
+
+  final _i15.Key? key;
+
+  final List<_i16.Category> categories;
+
+  @override
+  String toString() {
+    return 'CategoryListRouteArgs{key: $key, categories: $categories}';
+  }
+}
+
+/// generated route for
+/// [_i4.Dashboard]
+class DashboardRoute extends _i14.PageRouteInfo<void> {
+  const DashboardRoute({List<_i14.PageRouteInfo>? children})
       : super(
           DashboardRoute.name,
           initialChildren: children,
@@ -130,13 +240,13 @@ class DashboardRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'DashboardRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i3.FilterPost]
-class FilterPostRoute extends _i11.PageRouteInfo<void> {
-  const FilterPostRoute({List<_i11.PageRouteInfo>? children})
+/// [_i5.FilterPost]
+class FilterPostRoute extends _i14.PageRouteInfo<void> {
+  const FilterPostRoute({List<_i14.PageRouteInfo>? children})
       : super(
           FilterPostRoute.name,
           initialChildren: children,
@@ -144,13 +254,13 @@ class FilterPostRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'FilterPostRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i4.General]
-class GeneralRoute extends _i11.PageRouteInfo<void> {
-  const GeneralRoute({List<_i11.PageRouteInfo>? children})
+/// [_i6.General]
+class GeneralRoute extends _i14.PageRouteInfo<void> {
+  const GeneralRoute({List<_i14.PageRouteInfo>? children})
       : super(
           GeneralRoute.name,
           initialChildren: children,
@@ -158,13 +268,13 @@ class GeneralRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'GeneralRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i5.Login]
-class LoginRoute extends _i11.PageRouteInfo<void> {
-  const LoginRoute({List<_i11.PageRouteInfo>? children})
+/// [_i7.Login]
+class LoginRoute extends _i14.PageRouteInfo<void> {
+  const LoginRoute({List<_i14.PageRouteInfo>? children})
       : super(
           LoginRoute.name,
           initialChildren: children,
@@ -172,15 +282,15 @@ class LoginRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i6.Onboard]
-class OnboardRoute extends _i11.PageRouteInfo<OnboardRouteArgs> {
+/// [_i8.Onboard]
+class OnboardRoute extends _i14.PageRouteInfo<OnboardRouteArgs> {
   OnboardRoute({
-    _i12.Key? key,
-    List<_i11.PageRouteInfo>? children,
+    _i15.Key? key,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           OnboardRoute.name,
           args: OnboardRouteArgs(key: key),
@@ -189,14 +299,14 @@ class OnboardRoute extends _i11.PageRouteInfo<OnboardRouteArgs> {
 
   static const String name = 'OnboardRoute';
 
-  static const _i11.PageInfo<OnboardRouteArgs> page =
-      _i11.PageInfo<OnboardRouteArgs>(name);
+  static const _i14.PageInfo<OnboardRouteArgs> page =
+      _i14.PageInfo<OnboardRouteArgs>(name);
 }
 
 class OnboardRouteArgs {
   const OnboardRouteArgs({this.key});
 
-  final _i12.Key? key;
+  final _i15.Key? key;
 
   @override
   String toString() {
@@ -205,12 +315,12 @@ class OnboardRouteArgs {
 }
 
 /// generated route for
-/// [_i7.Otp]
-class OtpRoute extends _i11.PageRouteInfo<OtpRouteArgs> {
+/// [_i9.Otp]
+class OtpRoute extends _i14.PageRouteInfo<OtpRouteArgs> {
   OtpRoute({
-    _i12.Key? key,
+    _i15.Key? key,
     required String mobileNo,
-    List<_i11.PageRouteInfo>? children,
+    List<_i14.PageRouteInfo>? children,
   }) : super(
           OtpRoute.name,
           args: OtpRouteArgs(
@@ -222,8 +332,8 @@ class OtpRoute extends _i11.PageRouteInfo<OtpRouteArgs> {
 
   static const String name = 'OtpRoute';
 
-  static const _i11.PageInfo<OtpRouteArgs> page =
-      _i11.PageInfo<OtpRouteArgs>(name);
+  static const _i14.PageInfo<OtpRouteArgs> page =
+      _i14.PageInfo<OtpRouteArgs>(name);
 }
 
 class OtpRouteArgs {
@@ -232,7 +342,7 @@ class OtpRouteArgs {
     required this.mobileNo,
   });
 
-  final _i12.Key? key;
+  final _i15.Key? key;
 
   final String mobileNo;
 
@@ -243,9 +353,9 @@ class OtpRouteArgs {
 }
 
 /// generated route for
-/// [_i8.Profile]
-class ProfileRoute extends _i11.PageRouteInfo<void> {
-  const ProfileRoute({List<_i11.PageRouteInfo>? children})
+/// [_i10.Profile]
+class ProfileRoute extends _i14.PageRouteInfo<void> {
+  const ProfileRoute({List<_i14.PageRouteInfo>? children})
       : super(
           ProfileRoute.name,
           initialChildren: children,
@@ -253,13 +363,13 @@ class ProfileRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'ProfileRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i9.Register]
-class RegisterRoute extends _i11.PageRouteInfo<void> {
-  const RegisterRoute({List<_i11.PageRouteInfo>? children})
+/// [_i11.Register]
+class RegisterRoute extends _i14.PageRouteInfo<void> {
+  const RegisterRoute({List<_i14.PageRouteInfo>? children})
       : super(
           RegisterRoute.name,
           initialChildren: children,
@@ -267,13 +377,13 @@ class RegisterRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'RegisterRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i10.SplashScreen]
-class SplashScreenRoute extends _i11.PageRouteInfo<void> {
-  const SplashScreenRoute({List<_i11.PageRouteInfo>? children})
+/// [_i12.SplashScreen]
+class SplashScreenRoute extends _i14.PageRouteInfo<void> {
+  const SplashScreenRoute({List<_i14.PageRouteInfo>? children})
       : super(
           SplashScreenRoute.name,
           initialChildren: children,
@@ -281,5 +391,19 @@ class SplashScreenRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'SplashScreenRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i13.UpdateProfile]
+class UpdateProfileRoute extends _i14.PageRouteInfo<void> {
+  const UpdateProfileRoute({List<_i14.PageRouteInfo>? children})
+      : super(
+          UpdateProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UpdateProfileRoute';
+
+  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
 }

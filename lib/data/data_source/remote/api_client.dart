@@ -61,6 +61,7 @@ class ApiClient{
       var token = await Utils.getToken();
       options.headers = baseOptions.headers
         ..addAll({"Authorization": "Bearer $token"});
+      debugPrint("token auth:Bearer $token");
     }
 
     try {
@@ -70,7 +71,7 @@ class ApiClient{
       var response = await dio.post(path, data: body, options: options);
       debugPrint("🔥============API RESPONSE============🔥");
       debugPrint("Status Code: ${response.statusCode}");
-      log("DATA: ${response.data.toString().substring(0,300)}");
+      // log("DATA: ${response.data.toString().substring(0,300)}");
       return response;
     } on DioException catch (e) {
       if (e.response != null) {
