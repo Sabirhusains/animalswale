@@ -83,6 +83,7 @@ class _FilterPostState extends State<FilterPost> {
                   } else if(state is VelocityUpdateState) {
                     return PostWidget(
                       posts: state.data.data!,
+                      categoryList:const [],
                       userId: userData!.id!,
                     );
                   }

@@ -19,6 +19,7 @@ class InitResponse {
     this.data,
   });
 
+
   factory InitResponse.fromJson(Map<String, dynamic> json) => InitResponse(
     success: json["success"],
     message: json["message"],

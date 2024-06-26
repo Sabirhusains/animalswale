@@ -25,7 +25,7 @@ class DashboardRepo extends ApiClient{
     userData = UserData.fromJson(json.decode(userdata));
   }
 
-  //Dashboard Api
+  ///Dashboard Api Method
   Future<InitResponse> dashboardApi(context)async {
     await getFcmToken();
     await getUserData();
@@ -52,7 +52,7 @@ class DashboardRepo extends ApiClient{
     return InitResponse();
   }
 
-  //Category Api
+  ///Rate Filter Post Api Method
   Future<FilterPostModel> filterRateApi(String rate,context)async {
     await getFcmToken();
 
@@ -78,6 +78,28 @@ class DashboardRepo extends ApiClient{
     return FilterPostModel();
   }
 
+  ///Category Filter Post Api Method
+  Future<FilterPostModel> categoryFilterApi(int categoryId,context)async {
+
+    var data = {
+      MyStrings.categoryId: categoryId,
+    };
+
+    var webData = {MyStrings.webData: jsonEncode(data)};
 
 
+    try{
+      final response = await postRequest(path: ApiEndpointsUrl.sortByCategory,body: webData,isTokenRequired: true);
+      if(response.statusCode == 200){
+        final responseData = FilterPostModel.fromJson(response.data);
+        return responseData;
+      }else{
+        FilterPostModel();
+      }
+    }on Exception catch(e){
+      VxToast.show(context, msg: e.toString());
+      FilterPostModel();
+    }
+    return FilterPostModel();
+  }
 }

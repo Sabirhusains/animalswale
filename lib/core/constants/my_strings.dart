@@ -37,12 +37,14 @@ class MyStrings{
 
   static const String animalType = "animalType";
   static const String gender = "gender";
+  static const String categoryId = "category_id";
   static const String title = "title";
   static const String description = "description";
   static const String currentMilk = "currentMilk";
   static const String highestMilk = "highestMilk";
   static const String price = "price";
   static const String age = "age";
+  static const String postId = "post_id";
   static const String seller = "seller";
   static const String location = "location";
   static const String image = "image";
