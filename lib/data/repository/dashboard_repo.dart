@@ -53,7 +53,6 @@ class DashboardRepo extends ApiClient{
   }
 
   //Category Api
-//Dashboard Api
   Future<FilterPostModel> filterRateApi(String rate,context)async {
     await getFcmToken();
 

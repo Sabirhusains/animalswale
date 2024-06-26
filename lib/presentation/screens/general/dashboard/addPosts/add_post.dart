@@ -3,7 +3,8 @@ part of 'add_post_imports.dart';
 @RoutePage()
 class AddPosts extends StatefulWidget {
   List<Category>? categoryList;
-  AddPosts({Key? key,required this.categoryList}) : super(key: key);
+
+  AddPosts({Key? key, required this.categoryList}) : super(key: key);
 
   @override
   State<AddPosts> createState() => _AddPostsState();
@@ -12,6 +13,7 @@ class AddPosts extends StatefulWidget {
 class _AddPostsState extends State<AddPosts> {
   late AddPostViewModel addPostViewModel;
   String? _selectedGender = "Male";
+  Category? selectedCategory;
 
   @override
   void initState() {
@@ -38,12 +40,23 @@ class _AddPostsState extends State<AddPosts> {
                 borderRadius: BorderRadius.circular(10),
                 color: MyColors.white,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  "Categories".text.make(),
-                  const Icon(FeatherIcons.chevronRight),
-                ],
+              child: DropdownButton<Category>(
+                value: selectedCategory,
+                underline: const SizedBox(),
+                isExpanded: true,
+                hint: const Text('Select Category'),
+                onChanged: (Category? newValue) {
+                  setState(() {
+                    selectedCategory = newValue!;
+                  });
+                },
+                items: widget.categoryList!
+                    .map<DropdownMenuItem<Category>>((Category category) {
+                  return DropdownMenuItem<Category>(
+                    value: category,
+                    child: Text(category.name),
+                  );
+                }).toList(),
               ),
             ),
             15.h.heightBox,
@@ -172,16 +185,31 @@ class _AddPostsState extends State<AddPosts> {
               ],
             ),
             15.h.heightBox,
-            VxTextField(
-              fillColor: Colors.white,
-              borderRadius: 10,
-              hint: "Current Location",
-              hintStyle: const TextStyle(color: Colors.black),
-              borderType: VxTextFieldBorderType.roundLine,
-              controller: addPostViewModel.currentLocationController,
-              readOnly: true,
-              borderColor: MyColors.white,
-              prefixIcon: const Icon(FeatherIcons.mapPin),
+            GestureDetector(
+              onTap: () => addPostViewModel.getCurrentPosition(context),
+              child: AbsorbPointer(
+                child: VxTextField(
+                  fillColor: Colors.white,
+                  borderRadius: 10,
+                  hint: "Current Location",
+                  hintStyle: const TextStyle(color: Colors.black),
+                  borderType: VxTextFieldBorderType.roundLine,
+                  controller: addPostViewModel.currentLocationController,
+                  readOnly: true,
+                  borderColor: MyColors.white,
+                  prefixIcon:
+                      BlocBuilder<VelocityBloc<bool>, VelocityState<bool>>(
+                    bloc: addPostViewModel.isLoadingBloc,
+                    builder: (context, state) {
+                      return state.data == true
+                          ? const Center(
+                              child: CircularProgressIndicator.adaptive(),
+                            )
+                          : const Icon(FeatherIcons.mapPin);
+                    },
+                  ),
+                ),
+              ),
             ),
             15.h.heightBox,
             BlocBuilder<VelocityBloc<XFile?>, VelocityState<XFile?>>(
@@ -217,7 +245,18 @@ class _AddPostsState extends State<AddPosts> {
               },
             ),
             20.h.heightBox,
-            PrimaryButton(title: "Create New Post", onPressed: () {}),
+            BlocBuilder<VelocityBloc<bool>, VelocityState<bool>>(
+              bloc: addPostViewModel.isLoadingButtonBloc,
+              builder: (context, state) {
+                return PrimaryButton(
+                    title: "Create New Post",
+                    isLoading: state.data,
+                    onPressed: () => addPostViewModel.addPost(
+                        selectedCategory!.id.toString(),
+                        _selectedGender.toString(),
+                        context));
+              },
+            ),
             40.h.heightBox,
           ],
         ),

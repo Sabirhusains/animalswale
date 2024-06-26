@@ -1,5 +1,6 @@
 import 'package:animalswale_app/data/repository/auth_repo.dart';
 import 'package:animalswale_app/data/repository/dashboard_repo.dart';
+import 'package:animalswale_app/data/repository/post_repo.dart';
 import 'package:animalswale_app/data/repository/repository.dart';
 import 'package:animalswale_app/presentation/screens/auth/otp/otp_model.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,6 +29,7 @@ void main() async {
           Repository(
             authRepo: AuthRepo(),
             dashboardRepo: DashboardRepo(),
+            postRepo: PostRepo(),
           ),
       child: MyApp()));
 }

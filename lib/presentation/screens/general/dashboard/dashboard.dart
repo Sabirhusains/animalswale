@@ -40,11 +40,11 @@ class _DashboardState extends State<Dashboard> {
                 child: CircularProgressIndicator.adaptive(),
               );
             } else if (state is VelocityUpdateState) {
-              if(state.data.data != null){
+              if (state.data.data != null) {
                 InitData initData = state.data.data!;
                 categoriesList = initData.categories;
                 return SingleChildScrollView(
-                  physics:const BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
                       20.h.heightBox,
@@ -73,8 +73,19 @@ class _DashboardState extends State<Dashboard> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: MyColors.primaryColor,
-        onPressed: () =>categoriesList!.isNotEmpty? AutoRouter.of(context).push(AddPostsRoute(categoryList: categoriesList)): null,
-        child:const Icon(FeatherIcons.plus,color:MyColors.white,),
+        onPressed: () async {
+         final result=  categoriesList!.isNotEmpty
+              ?await AutoRouter.of(context)
+              .push(AddPostsRoute(categoryList: categoriesList))
+              : null;
+         if(result == true){
+           await dashboardViewModel.fetchAllDashboardData(context);
+         }
+        },
+        child: const Icon(
+          FeatherIcons.plus,
+          color: MyColors.white,
+        ),
       ),
     );
   }

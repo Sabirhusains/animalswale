@@ -33,4 +33,18 @@ class MyStrings{
   static const String profile_image = "profile_image";
   static const String deviceToken = "device_token";
   static const String rate = "rate";
+
+
+  static const String animalType = "animalType";
+  static const String gender = "gender";
+  static const String title = "title";
+  static const String description = "description";
+  static const String currentMilk = "currentMilk";
+  static const String highestMilk = "highestMilk";
+  static const String price = "price";
+  static const String age = "age";
+  static const String seller = "seller";
+  static const String location = "location";
+  static const String image = "image";
+
 }

@@ -16,7 +16,6 @@ class DashboardViewModel {
       print("DASHBOARD DATA-=-=----->${dashboardData.data.toString()}");
       dashboardBloc.onUpdateData(dashboardData);
     }
-
   }
 
 

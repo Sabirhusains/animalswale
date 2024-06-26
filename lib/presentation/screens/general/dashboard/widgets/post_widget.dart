@@ -108,7 +108,7 @@ class PostWidget extends StatelessWidget {
                             ),
                             title: post.seller.text.make(),
                             trailing: SizedBox(
-                              width: 75.w,
+                              width: 80.w,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
