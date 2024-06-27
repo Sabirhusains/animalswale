@@ -33,12 +33,12 @@ class _PostWidgetState extends State<PostWidget> {
   Future<void> deletePost(String postId) async {
     // Show delete dialog
     bool confirmed = await showDeleteDialog(
-        context, "Delete Post", "Are you Sure Want to delete this Post?");
+        context, "Delete Post", "Are you Sure Want to delete this Post?","Delete");
 
     if (confirmed) {
       // Delete the post from the server
-      bool success = await dashboardViewModel
-          .deletePost(postId,context); // Assuming deletePost method exists in ViewModel
+      bool success = await dashboardViewModel.deletePost(
+          postId, context); // Assuming deletePost method exists in ViewModel
 
       if (success) {
         // Refresh the posts data
@@ -55,7 +55,6 @@ class _PostWidgetState extends State<PostWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //List Posts Widget
         Column(
           children: updatedPosts
               .map((post) => Padding(
@@ -64,54 +63,57 @@ class _PostWidgetState extends State<PostWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          widget.categoryList.isNotEmpty?widget.userId == post.userId
-                              ? Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
-                                            color: MyColors.primaryColor
-                                                .withOpacity(0.6),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topRight: Radius.circular(15),
-                                              bottomLeft: Radius.circular(20),
-                                            )),
-                                        child: InkWell(
-                                            onTap: () async {
-                                              final result =
-                                                  await AutoRouter.of(context)
+                          widget.categoryList.isNotEmpty
+                              ? widget.userId == post.userId
+                                  ? Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                            padding: const EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                                color: MyColors.primaryColor
+                                                    .withOpacity(0.6),
+                                                borderRadius:
+                                                    const BorderRadius.only(
+                                                  topRight: Radius.circular(15),
+                                                  bottomLeft:
+                                                      Radius.circular(20),
+                                                )),
+                                            child: InkWell(
+                                                onTap: () async {
+                                                  final result = await AutoRouter
+                                                          .of(context)
                                                       .push(UpdatePostRoute(
                                                           postData: post,
                                                           categoryList: widget
                                                               .categoryList));
-                                              if (result == true) {
-                                                await dashboardViewModel
-                                                    .fetchAllDashboardData(
-                                                        context);
-                                                setState(() {
-                                                  updatedPosts =
-                                                      dashboardViewModel
-                                                              .dashboardBloc
-                                                              .state
-                                                              .data
-                                                              .data
-                                                              ?.posts ??
-                                                          [];
-                                                });
-                                              }
-                                            },
-                                            child: const Icon(Icons.edit))),
-                                  ],
-                                )
+                                                  if (result == true) {
+                                                    await dashboardViewModel
+                                                        .fetchAllDashboardData(
+                                                            context);
+                                                    setState(() {
+                                                      updatedPosts =
+                                                          dashboardViewModel
+                                                                  .dashboardBloc
+                                                                  .state
+                                                                  .data
+                                                                  .data
+                                                                  ?.posts ??
+                                                              [];
+                                                    });
+                                                  }
+                                                },
+                                                child: const Icon(Icons.edit))),
+                                      ],
+                                    )
+                                  : const SizedBox(
+                                      height: 0,
+                                      width: 0,
+                                    )
                               : const SizedBox(
                                   height: 0,
                                   width: 0,
-                                ):const SizedBox(
-                            height: 0,
-                            width: 0,
-                          ),
+                                ),
                           //Title & description time
                           Padding(
                               padding: const EdgeInsets.only(

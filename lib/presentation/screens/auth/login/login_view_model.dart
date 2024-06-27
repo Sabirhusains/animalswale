@@ -18,8 +18,7 @@ class LoginViewModel{
     isLoading.onUpdateData(true);
     var loginData=await repository.authRepo.loginApi(phoneController.text,context);
 
-    if(loginData.success !=  'false'){
-      // Utils.saveToken(loginData.accessToken.toString());
+    if(loginData.success != 'false'){
       AutoRouter.of(context).push(OtpRoute(mobileNo: phoneController.text));
     }else{
       VxToast.show(context, msg: loginData.message.toString());

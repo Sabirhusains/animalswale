@@ -9,9 +9,12 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  bool isConnectedInternet = false;
+  StreamSubscription? internetConnectionStreamSubscription;
   late DashboardViewModel dashboardViewModel;
   UserData? userData;
   List<Category>? categoriesList;
+
 
   @override
   void initState() {
@@ -20,6 +23,26 @@ class _DashboardState extends State<Dashboard> {
         DashboardViewModel(repository: context.read<Repository>());
     dashboardViewModel.fetchAllDashboardData(context);
     super.initState();
+    // internetConnectionStreamSubscription = InternetConnection().onStatusChange.listen((event){
+    //   switch (event){
+    //
+    //     case InternetStatus.connected:
+    //       setState(() {
+    //         isConnectedInternet = true;
+    //       });
+    //       break;
+    //     case InternetStatus.disconnected:
+    //       setState(() {
+    //         isConnectedInternet = false;
+    //       });
+    //       break;
+    //     default:
+    //       setState(() {
+    //         isConnectedInternet = false;
+    //       });
+    //       break;
+    //   }
+    // });
   }
 
   getUserId() async {

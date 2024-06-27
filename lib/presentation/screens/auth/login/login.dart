@@ -55,25 +55,12 @@ class _LoginState extends State<Login> {
                       48.h.heightBox,
                       "Mobile Number".text.make(),
                       8.h.heightBox,
-                      VxTextField(
-                        fillColor: Colors.transparent,
-                        borderRadius: 10,
+                      CommanTextfield(
                         hint: "+91 11111 11111",
-                        hintStyle: const TextStyle(color: Colors.grey),
                         controller: loginViewModel.phoneController,
-                        borderType: VxTextFieldBorderType.roundLine,
-                        keyboardType: TextInputType.phone,
+                        textInputType: TextInputType.phone,
                         textInputAction: TextInputAction.done,
-                        borderColor: MyColors.primaryColor,
                         prefixIcon: const Icon(FeatherIcons.phone),
-                        // validator: (email) {
-                        //   if (email!.isEmpty) {
-                        //     return "Email is Empty";
-                        //   } else if (!email.isValidEmail) {
-                        //     return "Invalid Email";
-                        //   }
-                        //   return null;
-                        // },
                       ),
                       40.h.heightBox,
                       BlocBuilder<VelocityBloc<bool>, VelocityState<bool>>(

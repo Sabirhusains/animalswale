@@ -57,12 +57,33 @@ class _UpdateProfileState extends State<UpdateProfile> {
                           fit: BoxFit.cover,
                         ).cornerRadius(20).centered()
                       else
-                        Image.network(
-                          "https://i0.wp.com/sunrisedaycamp.org/wp-content/uploads/2020/10/placeholder.png?ssl=1",
+                        Container(
                           height: 200,
                           width: 0.5.sw,
-                          fit: BoxFit.cover,
-                        ).cornerRadius(20).centered(),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              style: BorderStyle.solid,
+                            ),
+                            color:const Color(0xffe1e4d5),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.cloud_upload_outlined,
+                                  size: 30,
+                                ),
+                                Text(
+                                  "Select Image",
+                                  style: context.bodySmall,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       CircleAvatar(
                         radius: 23,
                         child: IconButton(
@@ -83,30 +104,21 @@ class _UpdateProfileState extends State<UpdateProfile> {
             20.h.heightBox,
             "Full Name".text.make(),
             8.h.heightBox,
-            VxTextField(
-              fillColor: Colors.transparent,
-              borderRadius: 10,
+            CommanTextfield(
               hint: "John Denny..",
-              hintStyle: const TextStyle(color: Colors.grey),
-              borderType: VxTextFieldBorderType.roundLine,
               controller: profileViewModel.nameController,
-              keyboardType: TextInputType.name,
+              textInputType: TextInputType.name,
               textInputAction: TextInputAction.next,
-              borderColor: MyColors.primaryColor,
               prefixIcon: const Icon(Icons.person),
             ),
             20.h.heightBox,
             "Email".text.make(),
             8.h.heightBox,
-            VxTextField(
-              fillColor: Colors.transparent,
-              borderRadius: 10,
+            CommanTextfield(
               hint: "john@gmail.com",
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
+              textInputType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.done,
               controller: profileViewModel.emailController,
-              borderType: VxTextFieldBorderType.roundLine,
-              borderColor: MyColors.primaryColor,
               prefixIcon: const Icon(Icons.email),
             ),
             40.h.heightBox,

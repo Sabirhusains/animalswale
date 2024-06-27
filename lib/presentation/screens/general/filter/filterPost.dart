@@ -41,16 +41,11 @@ class _FilterPostState extends State<FilterPost> {
                 children: [
                   Expanded(
                     flex: 7,
-                    child: VxTextField(
-                      fillColor: Colors.transparent,
-                      borderRadius: 10,
+                    child: CommanTextfield(
                       hint: "Enter Your Max Price",
-                      hintStyle: const TextStyle(color: Colors.grey),
-                      borderType: VxTextFieldBorderType.roundLine,
                       controller: filterpostViewModel.rateController,
-                      keyboardType: TextInputType.number,
+                      textInputType: TextInputType.number,
                       textInputAction: TextInputAction.done,
-                      borderColor: MyColors.primaryColor,
                       prefixIcon: const Icon(Icons.money),
                     ),
                   ),

@@ -3,7 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 
- Future<bool> showDeleteDialog(BuildContext context,String title,String description) async {
+ Future<bool> showDeleteDialog(BuildContext context,String title,String description,String buttonName) async {
   return showDialog<bool>(
     context: context,
     builder: (BuildContext context) {
@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
             },
           ),
           TextButton(
-            child:const Text("Delete"),
+            child:Text(buttonName),
             onPressed: () {
               AutoRouter.of(context).pop(true); // Return true when confirmed
             },

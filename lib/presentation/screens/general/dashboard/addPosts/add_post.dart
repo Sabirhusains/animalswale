@@ -96,58 +96,36 @@ class _AddPostsState extends State<AddPosts> {
               ],
             ),
             15.h.heightBox,
-            VxTextField(
-              fillColor: Colors.transparent,
-              borderRadius: 10,
+            CommanTextfield(
               hint: "Enter Title here..",
-              hintStyle: const TextStyle(color: Colors.grey),
-              borderType: VxTextFieldBorderType.roundLine,
               controller: addPostViewModel.titleController,
-              keyboardType: TextInputType.text,
               textInputAction: TextInputAction.next,
-              borderColor: MyColors.primaryColor,
             ),
             15.h.heightBox,
-            VxTextField(
-              fillColor: Colors.transparent,
-              borderRadius: 10,
+            CommanTextfield(
               hint: "Enter Description here..",
               maxLine: 3,
-              hintStyle: const TextStyle(color: Colors.grey),
-              borderType: VxTextFieldBorderType.roundLine,
               controller: addPostViewModel.descriptionController,
-              keyboardType: TextInputType.text,
               textInputAction: TextInputAction.next,
-              borderColor: MyColors.primaryColor,
             ),
             15.h.heightBox,
             Row(
               children: [
                 Expanded(
-                  child: VxTextField(
-                    fillColor: Colors.transparent,
-                    borderRadius: 10,
+                  child: CommanTextfield(
                     hint: "Current Milk ltr..",
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    borderType: VxTextFieldBorderType.roundLine,
                     controller: addPostViewModel.currentMilkController,
-                    keyboardType: TextInputType.number,
+                    textInputType: TextInputType.number,
                     textInputAction: TextInputAction.next,
-                    borderColor: MyColors.primaryColor,
                   ),
                 ),
                 5.w.widthBox,
                 Expanded(
-                  child: VxTextField(
-                    fillColor: Colors.transparent,
-                    borderRadius: 10,
+                  child: CommanTextfield(
                     hint: "Highest Milk ltr..",
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    borderType: VxTextFieldBorderType.roundLine,
                     controller: addPostViewModel.highestMilkController,
-                    keyboardType: TextInputType.number,
+                    textInputType: TextInputType.number,
                     textInputAction: TextInputAction.next,
-                    borderColor: MyColors.primaryColor,
                   ),
                 ),
               ],
@@ -156,30 +134,20 @@ class _AddPostsState extends State<AddPosts> {
             Row(
               children: [
                 Expanded(
-                  child: VxTextField(
-                    fillColor: Colors.transparent,
-                    borderRadius: 10,
+                  child: CommanTextfield(
                     hint: "Enter Price..",
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    borderType: VxTextFieldBorderType.roundLine,
                     controller: addPostViewModel.priceController,
-                    keyboardType: TextInputType.number,
+                    textInputType: TextInputType.number,
                     textInputAction: TextInputAction.next,
-                    borderColor: MyColors.primaryColor,
                   ),
                 ),
                 5.w.widthBox,
                 Expanded(
-                  child: VxTextField(
-                    fillColor: Colors.transparent,
-                    borderRadius: 10,
+                  child: CommanTextfield(
                     hint: "Enter Animal Age..",
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    borderType: VxTextFieldBorderType.roundLine,
                     controller: addPostViewModel.ageController,
-                    keyboardType: TextInputType.number,
+                    textInputType: TextInputType.number,
                     textInputAction: TextInputAction.next,
-                    borderColor: MyColors.primaryColor,
                   ),
                 ),
               ],
@@ -188,15 +156,10 @@ class _AddPostsState extends State<AddPosts> {
             GestureDetector(
               onTap: () => addPostViewModel.getCurrentPosition(context),
               child: AbsorbPointer(
-                child: VxTextField(
-                  fillColor: Colors.white,
-                  borderRadius: 10,
+                child: CommanTextfield(
                   hint: "Current Location",
-                  hintStyle: const TextStyle(color: Colors.black),
-                  borderType: VxTextFieldBorderType.roundLine,
                   controller: addPostViewModel.currentLocationController,
                   readOnly: true,
-                  borderColor: MyColors.white,
                   prefixIcon:
                       BlocBuilder<VelocityBloc<bool>, VelocityState<bool>>(
                     bloc: addPostViewModel.isLoadingBloc,
@@ -225,19 +188,41 @@ class _AddPostsState extends State<AddPosts> {
                             width: 1.sw,
                             fit: BoxFit.cover,
                           ).cornerRadius(20).centered()
-                        : Image.network(
-                            "https://i0.wp.com/sunrisedaycamp.org/wp-content/uploads/2020/10/placeholder.png?ssl=1",
-                            height: 200,
-                            width: 1.sw,
-                            fit: BoxFit.cover,
-                          ).cornerRadius(20).centered(),
+                        : Container(
+                      height: 200,
+                      width: 1.sw,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          style: BorderStyle.solid,
+                        ),
+                        color:const Color(0xffe1e4d5),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.cloud_upload_outlined,
+                              size: 30,
+                            ),
+                            Text(
+                              "Select Image",
+                              style: context.bodySmall,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     CircleAvatar(
+                      backgroundColor: MyColors.primaryColor,
                       radius: 23,
                       child: IconButton(
                           onPressed: () => addPostViewModel.pickImage(context),
                           icon: const Icon(
                             FeatherIcons.camera,
-                            color: MyColors.primaryColor,
+                            color: MyColors.white,
                           )),
                     ),
                   ],
