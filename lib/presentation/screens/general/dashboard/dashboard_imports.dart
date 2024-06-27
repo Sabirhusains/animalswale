@@ -9,6 +9,7 @@ import 'package:animalswale_app/presentation/screens/auth/otp/otp_model.dart';
 import 'package:animalswale_app/presentation/screens/general/dashboard/dashboard_model.dart';
 import 'package:animalswale_app/presentation/screens/general/dashboard/widgets/widgets_imports.dart';
 import 'package:animalswale_app/utils/utils.dart';
+import 'package:animation_wrappers/animation_wrappers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';

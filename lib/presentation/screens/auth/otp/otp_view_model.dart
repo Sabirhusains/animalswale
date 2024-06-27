@@ -27,4 +27,13 @@ class OtpViewModel {
     isLoadingBloc.onUpdateData(false);
   }
 
+  resendOTP(String phone,context)async{
+    final response = await repository.authRepo.resendOTPApi(phone, context);
+    if(response.success != 'false'){
+      VxToast.show(context, msg: 'Please Check Your Messages');
+    }else{
+      VxToast.show(context, msg: response.message.toString());
+    }
+  }
+
 }

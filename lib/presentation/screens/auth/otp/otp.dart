@@ -86,16 +86,15 @@ class _OtpState extends State<Otp> {
                                 VxToast.show(context, msg: "Incorrect OTP");
                               }
                             },
-                            // onPressed: () {
-                            //   if (loginViewModel.formKey.currentState!
-                            //       .validate()) {
-                            //     loginViewModel.login(context);
-                            //   }
-                            // }
                           );
                         },
                       ),
                       20.h.heightBox,
+                      TextButton(onPressed: (){
+                        if(widget.mobileNo.isNotEmpty){
+                          otpViewModel.resendOTP(widget.mobileNo, context);
+                        }
+                      }, child: "Resend OTP".text.xl2.makeCentered()),
                     ],
                   ),
                 ),

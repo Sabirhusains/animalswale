@@ -1,12 +1,14 @@
 part of 'widgets_imports.dart';
 
 class PostWidget extends StatefulWidget {
+  String type;
   List<Post> posts;
   List<Category> categoryList;
   int userId;
 
   PostWidget(
       {Key? key,
+      required this.type,
       required this.posts,
       required this.categoryList,
       required this.userId})
@@ -62,7 +64,7 @@ class _PostWidgetState extends State<PostWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          widget.userId == post.userId
+                          widget.categoryList.isNotEmpty?widget.userId == post.userId
                               ? Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
@@ -106,7 +108,10 @@ class _PostWidgetState extends State<PostWidget> {
                               : const SizedBox(
                                   height: 0,
                                   width: 0,
-                                ),
+                                ):const SizedBox(
+                            height: 0,
+                            width: 0,
+                          ),
                           //Title & description time
                           Padding(
                               padding: const EdgeInsets.only(

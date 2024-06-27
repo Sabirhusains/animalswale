@@ -12,7 +12,6 @@ class _DashboardState extends State<Dashboard> {
   late DashboardViewModel dashboardViewModel;
   UserData? userData;
   List<Category>? categoriesList;
-  List<Post> posts = [];
 
   @override
   void initState() {
@@ -20,14 +19,6 @@ class _DashboardState extends State<Dashboard> {
     dashboardViewModel =
         DashboardViewModel(repository: context.read<Repository>());
     dashboardViewModel.fetchAllDashboardData(context);
-    dashboardViewModel.dashboardBloc.stream.listen((state) {
-      if (state is VelocityUpdateState) {
-        setState(() {
-          categoriesList = state.data.data?.categories;
-          posts = state.data.data?.posts ?? [];
-        });
-      }
-    });
     super.initState();
   }
 
@@ -39,8 +30,7 @@ class _DashboardState extends State<Dashboard> {
   void filterPostsByCategory(int categoryId) async {
     bool result = await dashboardViewModel.categoryFilter(categoryId, context);
     if (result) {
-      await dashboardViewModel.fetchAllDashboardData(context);
-      print("Latest POSTS-=-=---=--->${dashboardViewModel.dashboardBloc.state.data.data!.posts.map((e)=>e.toJson())}");
+      setState(() {});
     }
   }
 
@@ -100,10 +90,13 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       40.h.heightBox,
                       //Post Widget
-                      PostWidget(
-                        posts: initData.posts,
-                        categoryList: initData.categories,
-                        userId: userData!.id!,
+                      FadedScaleAnimation(
+                        child: PostWidget(
+                          type: "Dashboard",
+                          posts: initData.posts,
+                          categoryList: initData.categories,
+                          userId: userData!.id!,
+                        ),
                       ),
                       40.h.heightBox,
                     ],

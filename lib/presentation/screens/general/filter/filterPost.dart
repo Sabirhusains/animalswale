@@ -81,11 +81,14 @@ class _FilterPostState extends State<FilterPost> {
                   if (state is VelocityInitialState) {
                     return const SizedBox();
                   } else if(state is VelocityUpdateState) {
-                    return PostWidget(
+                    print("POST FILTER-=---=-->${state.data.data.toString()}");
+
+                    return state.data.data != null ? PostWidget(
+                      type: "Filter",
                       posts: state.data.data!,
-                      categoryList:const [],
+                      categoryList: const [],
                       userId: userData!.id!,
-                    );
+                    ):Center(child: "No more Post Data".text.make(),);
                   }
                   return const SizedBox();
                 },

@@ -63,6 +63,34 @@ class AuthRepo extends ApiClient{
     return MessageModel();
   }
 
+
+  ///Resend OTP Api Method
+  Future<MessageModel> resendOTPApi (String phone,context)async{
+
+    var data = {
+      MyStrings.phone: "91$phone",
+    };
+
+    var webData = {MyStrings.webData: jsonEncode(data)};
+
+
+    try{
+      final response = await postRequest(path: ApiEndpointsUrl.resendOtp,body: webData);
+      if(response.statusCode == 200){
+        var responseJson = json.decode(response.data);
+        final responseData = MessageModel.fromJson(responseJson);
+        return responseData;
+      }else{
+        MessageModel();
+      }
+
+    }on Exception catch(e){
+      VxToast.show(context, msg: e.toString());
+      MessageModel();
+    }
+    return MessageModel();
+  }
+
   ///Register Api
   Future<MessageModel> registerApi (String name,String phone,String email,String password,XFile image,context)async{
     await getFcmToken();
