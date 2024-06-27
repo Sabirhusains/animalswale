@@ -22,5 +22,19 @@ samples, guidance on mobile development, and a full API reference.
   <img 
     width=40%
     height=40%
-    src="https://user-images.githubusercontent.com/101565812/169487751-6bd120ee-b080-43b0-aafa-3a86dc91012f.jpg" >
+    src="https://github.com/Sabirhusains/animalswale/blob/main/assets/app_screenshot/1.png" >
+</p>
+
+<p align="center">
+  <img 
+    width=40%
+    height=40%
+    src="https://github.com/Sabirhusains/animalswale/blob/main/assets/app_screenshot/2.png" >
+</p>
+
+<p align="center">
+  <img 
+    width=40%
+    height=40%
+    src="https://github.com/Sabirhusains/animalswale/blob/main/assets/app_screenshot/3.png" >
 </p>
