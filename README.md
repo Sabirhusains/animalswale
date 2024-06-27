@@ -20,21 +20,21 @@ samples, guidance on mobile development, and a full API reference.
 
 <p align="center">
   <img 
-    width=40%
+    width=80%
     height=40%
     src="https://github.com/Sabirhusains/animalswale/blob/main/assets/app_screenshot/1.png" >
 </p>
 
 <p align="center">
   <img 
-    width=40%
+    width=80%
     height=40%
     src="https://github.com/Sabirhusains/animalswale/blob/main/assets/app_screenshot/2.png" >
 </p>
 
 <p align="center">
   <img 
-    width=40%
+    width=80%
     height=40%
     src="https://github.com/Sabirhusains/animalswale/blob/main/assets/app_screenshot/3.png" >
 </p>
