@@ -41,7 +41,7 @@ class _FilterPostState extends State<FilterPost> {
                 children: [
                   Expanded(
                     flex: 7,
-                    child: CommanTextfield(
+                    child: CommonTextfield(
                       hint: "Enter Your Max Price",
                       controller: filterpostViewModel.rateController,
                       textInputType: TextInputType.number,

@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
                       48.h.heightBox,
                       "Mobile Number".text.make(),
                       8.h.heightBox,
-                      CommanTextfield(
+                      CommonTextfield(
                         hint: "+91 11111 11111",
                         controller: loginViewModel.phoneController,
                         textInputType: TextInputType.phone,

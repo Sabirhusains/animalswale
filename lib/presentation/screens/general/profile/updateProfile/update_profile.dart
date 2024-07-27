@@ -104,7 +104,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             20.h.heightBox,
             "Full Name".text.make(),
             8.h.heightBox,
-            CommanTextfield(
+            CommonTextfield(
               hint: "John Denny..",
               controller: profileViewModel.nameController,
               textInputType: TextInputType.name,
@@ -114,7 +114,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             20.h.heightBox,
             "Email".text.make(),
             8.h.heightBox,
-            CommanTextfield(
+            CommonTextfield(
               hint: "john@gmail.com",
               textInputType: TextInputType.emailAddress,
               textInputAction: TextInputAction.done,

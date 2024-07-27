@@ -96,13 +96,13 @@ class _AddPostsState extends State<AddPosts> {
               ],
             ),
             15.h.heightBox,
-            CommanTextfield(
+            CommonTextfield(
               hint: "Enter Title here..",
               controller: addPostViewModel.titleController,
               textInputAction: TextInputAction.next,
             ),
             15.h.heightBox,
-            CommanTextfield(
+            CommonTextfield(
               hint: "Enter Description here..",
               maxLine: 3,
               controller: addPostViewModel.descriptionController,
@@ -112,7 +112,7 @@ class _AddPostsState extends State<AddPosts> {
             Row(
               children: [
                 Expanded(
-                  child: CommanTextfield(
+                  child: CommonTextfield(
                     hint: "Current Milk ltr..",
                     controller: addPostViewModel.currentMilkController,
                     textInputType: TextInputType.number,
@@ -121,7 +121,7 @@ class _AddPostsState extends State<AddPosts> {
                 ),
                 5.w.widthBox,
                 Expanded(
-                  child: CommanTextfield(
+                  child: CommonTextfield(
                     hint: "Highest Milk ltr..",
                     controller: addPostViewModel.highestMilkController,
                     textInputType: TextInputType.number,
@@ -134,7 +134,7 @@ class _AddPostsState extends State<AddPosts> {
             Row(
               children: [
                 Expanded(
-                  child: CommanTextfield(
+                  child: CommonTextfield(
                     hint: "Enter Price..",
                     controller: addPostViewModel.priceController,
                     textInputType: TextInputType.number,
@@ -143,7 +143,7 @@ class _AddPostsState extends State<AddPosts> {
                 ),
                 5.w.widthBox,
                 Expanded(
-                  child: CommanTextfield(
+                  child: CommonTextfield(
                     hint: "Enter Animal Age..",
                     controller: addPostViewModel.ageController,
                     textInputType: TextInputType.number,
@@ -156,7 +156,7 @@ class _AddPostsState extends State<AddPosts> {
             GestureDetector(
               onTap: () => addPostViewModel.getCurrentPosition(context),
               child: AbsorbPointer(
-                child: CommanTextfield(
+                child: CommonTextfield(
                   hint: "Current Location",
                   controller: addPostViewModel.currentLocationController,
                   readOnly: true,

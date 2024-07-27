@@ -14,9 +14,6 @@ import 'firebase_options.dart';
 import 'presentation/routers/routers_import.dart';
 
 
-///Kamiyab GS
-//95121 86530
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

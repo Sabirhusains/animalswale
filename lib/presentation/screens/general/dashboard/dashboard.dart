@@ -23,26 +23,6 @@ class _DashboardState extends State<Dashboard> {
         DashboardViewModel(repository: context.read<Repository>());
     dashboardViewModel.fetchAllDashboardData(context);
     super.initState();
-    // internetConnectionStreamSubscription = InternetConnection().onStatusChange.listen((event){
-    //   switch (event){
-    //
-    //     case InternetStatus.connected:
-    //       setState(() {
-    //         isConnectedInternet = true;
-    //       });
-    //       break;
-    //     case InternetStatus.disconnected:
-    //       setState(() {
-    //         isConnectedInternet = false;
-    //       });
-    //       break;
-    //     default:
-    //       setState(() {
-    //         isConnectedInternet = false;
-    //       });
-    //       break;
-    //   }
-    // });
   }
 
   getUserId() async {

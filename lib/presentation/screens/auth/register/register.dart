@@ -91,7 +91,7 @@ class _RegisterState extends State<Register> {
                         8.h.heightBox,
                         "Full Name".text.make(),
                         8.h.heightBox,
-                        CommanTextfield(
+                        CommonTextfield(
                           hint: "John Denny..",
                           controller: registerViewModel.nameController,
                           textInputType: TextInputType.name,
@@ -101,7 +101,7 @@ class _RegisterState extends State<Register> {
                         20.h.heightBox,
                         "Phone".text.make(),
                         8.h.heightBox,
-                        CommanTextfield(
+                        CommonTextfield(
                           hint: "+91 11111 11111",
                           controller: registerViewModel.phoneController,
                           textInputType: TextInputType.phone,
@@ -111,7 +111,7 @@ class _RegisterState extends State<Register> {
                         20.h.heightBox,
                         "Email".text.make(),
                         8.h.heightBox,
-                        CommanTextfield(
+                        CommonTextfield(
                           hint: "john@gmail.com",
                           textInputType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
@@ -121,7 +121,7 @@ class _RegisterState extends State<Register> {
                         20.h.heightBox,
                         "Password".text.make(),
                         8.h.heightBox,
-                        CommanTextfield(
+                        CommonTextfield(
                           textInputType: TextInputType.visiblePassword,
                           textInputAction: TextInputAction.done,
                           controller: registerViewModel.passwordController,

@@ -29,13 +29,14 @@ class _ProfileState extends State<Profile> {
               20.h.heightBox,
               ///Profile Info Code
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 15, bottom: 5),
+                padding:
+                    const EdgeInsets.only(left: 20.0, right: 15, bottom: 5),
                 child: "Profile Info".text.bodyLarge(context).make(),
               ),
               BlocProvider(
                 create: (context) => profileViewModel.userDataBloc,
-                child:
-                    BlocBuilder<VelocityBloc<UserData>, VelocityState<UserData>>(
+                child: BlocBuilder<VelocityBloc<UserData>,
+                    VelocityState<UserData>>(
                   bloc: profileViewModel.userDataBloc,
                   builder: (context, state) {
                     if (state is VelocityInitialState) {
@@ -107,7 +108,8 @@ class _ProfileState extends State<Profile> {
               20.h.heightBox,
               //App Info
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 15, bottom: 5),
+                padding:
+                    const EdgeInsets.only(left: 20.0, right: 15, bottom: 5),
                 child: "App Info".text.bodyLarge(context).make(),
               ),
               Padding(
@@ -131,8 +133,8 @@ class _ProfileState extends State<Profile> {
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: ListTile(
-                          onTap: () => profileViewModel
-                              .launchUrl("https://www.animalswale.com/about-us/"),
+                          onTap: () => profileViewModel.launchUrl(
+                              "https://www.animalswale.com/about-us/"),
                           leading: CircleAvatar(
                               backgroundColor:
                                   MyColors.primaryColor.withOpacity(0.6),
@@ -191,9 +193,9 @@ class _ProfileState extends State<Profile> {
                     child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: PrimaryButton(
-                      title: "Logout",
-                      onPressed: () => logout(),
-                      ),
+                    title: "Logout",
+                    onPressed: () => logout(),
+                  ),
                 )),
               ),
             ],
@@ -202,13 +204,15 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
+
   Future<void> logout() async {
     // Show delete dialog
     bool confirmed = await showDeleteDialog(
-        context, "Logout", "Are you Sure Want to Logout?","Logout");
+        context, "Logout", "Are you Sure Want to Logout?", "Logout");
 
     if (confirmed) {
-      await profileViewModel.logout(context); // Assuming deletePost method exists in ViewModel
+      await profileViewModel
+          .logout(context); // Assuming deletePost method exists in ViewModel
     }
   }
 }

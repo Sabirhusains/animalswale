@@ -1,7 +1,7 @@
 part of 'common_widget_imports.dart';
 
 
-class CommanTextfield extends StatelessWidget {
+class CommonTextfield extends StatelessWidget {
   final String? hint;
   final TextEditingController? controller;
   final Function()? onEditingComplete;
@@ -19,8 +19,8 @@ class CommanTextfield extends StatelessWidget {
   final bool? obSecureText;
   final FocusNode? focusNode;
 
-  const CommanTextfield({
-    Key? key,
+  const CommonTextfield({
+    super.key,
     this.hint,
     this.controller,
     this.onEditingComplete,
@@ -37,7 +37,7 @@ class CommanTextfield extends StatelessWidget {
     this.autoFocus = false,
     this.readOnly = false,
     this.focusNode,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

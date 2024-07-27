@@ -12,8 +12,6 @@ import '../../../../core/constants/my_colors.dart';
 import '../../../../core/constants/my_images.dart';
 import '../../../../core/constants/my_strings.dart';
 import '../../../../data/repository/repository.dart';
-import '../../../../utils/utils.dart';
-import '../../../../utils/validations.dart';
 import '../../../common_widgets/common_widget_imports.dart';
 import '../../../routers/routers_import.gr.dart';
 
