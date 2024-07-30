@@ -15,14 +15,19 @@ class LoginViewModel{
 
 
   login(context)async {
-    isLoading.onUpdateData(true);
-    var loginData=await repository.authRepo.loginApi(phoneController.text,context);
+    if(phoneController.text.isNotEmpty) {
+      isLoading.onUpdateData(true);
+      var loginData = await repository.authRepo.loginApi(
+          phoneController.text, context);
 
-    if(loginData.success != 'false'){
-      AutoRouter.of(context).push(OtpRoute(mobileNo: phoneController.text));
-    }else{
-      VxToast.show(context, msg: loginData.message.toString());
+      if (loginData.success != 'false') {
+        AutoRouter.of(context).push(OtpRoute(mobileNo: phoneController.text));
+      } else {
+        VxToast.show(context, msg: loginData.message.toString());
+      }
+      isLoading.onUpdateData(false);
+    }else {
+      VxToast.show(context, msg: "Please Insert Mobile Number");
     }
-    isLoading.onUpdateData(false);
   }
 }

@@ -54,7 +54,6 @@ class MyApp extends StatelessWidget {
               darkTheme: AppThemes.dark,
               themeMode: ThemeMode.system,
               routerConfig: _appRouter.config(),
-              // home: const MyHomePage(title: 'Flutter Demo Home Page'),
             ),
           );
         }
